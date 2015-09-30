@@ -6,4 +6,10 @@
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
     <string name="welcome">Bienvenido</string>
     <string name="main_btn">Cerrar Sesion</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login_txt">Iniciar sesion</string>
+    <string name="login_usr">Usuario</string>
+    <string name="login_pass">Contraseña</string>
+    <string name="login_btn">Entrar</string>
+    <string name="title_activity_root">RootActivity</string>
 </resources>
