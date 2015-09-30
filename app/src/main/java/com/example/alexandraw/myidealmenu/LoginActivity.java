@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;//
+import android.widget.TextView;
 
 
 // Se guarda el nombre del usuario y el login
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText usr, pass;
     Button in;
+    TextView link;
 
     //Objetos para leer y escribir
 
@@ -45,10 +47,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //Se recuperan los views
         usr = (EditText)findViewById(R.id.usr);
         pass = (EditText)findViewById(R.id.pass);
-        in = (Button)findViewById(R.id.btn);
+        in = (Button)findViewById(R.id.btnLog);
+        link = (TextView)findViewById(R.id.linkReg);
 
         //Se implementa alt+enter el que dice make
         in.setOnClickListener(this);
+        link.setOnClickListener(this);
 
         //En el onCreate obtengo los valores (Nombre y tipo)
         preferences = getSharedPreferences(PREFERENCE, MODE_PRIVATE);
@@ -62,22 +66,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        //Cuando le de click e iniciar sesion se llena el editor que tiene
-        //un booleano con la llave login =  true
-        editor.putBoolean(KEY_LOGIN, true);
+        switch (v.getId()) {
 
-        //Se guarda de manera persistente y va a estar hasta que se desinstale  la app
-        //se va a guardar el nombre del usuario
-        editor.putString(KEY_USER, usr.getText().toString());
-        editor.commit();
+            case R.id.btnLog:
+                    //Cuando le de click e iniciar sesion se llena el editor que tiene
+                    //un booleano con la llave login =  true
+                    editor.putBoolean(KEY_LOGIN, true);
 
-        //Se hace la navegacion al MainActivity, la navegacion entre
-        //pantallas se hace a traves de intents
+                    //Se guarda de manera persistente y va a estar hasta que se desinstale  la app
+                    //se va a guardar el nombre del usuario
+                    editor.putString(KEY_USER, usr.getText().toString());
+                    editor.commit();
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+                    //Se hace la navegacion al MainActivity, la navegacion entre
+                    //pantallas se hace a traves de intents
 
-        //Para que al darle atras se cierre la app y finalice la activity
-        finish();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+
+                    //Para que al darle atras se cierre la app y finalice la activity
+                    finish();
+            break;
+
+            case R.id.linkReg:
+                Intent intent2 = new Intent(this, RegisterActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+        }
     }
 }

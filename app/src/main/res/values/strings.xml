@@ -12,4 +12,12 @@
     <string name="login_pass">Contraseña</string>
     <string name="login_btn">Entrar</string>
     <string name="title_activity_root">RootActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="register_txt">Registro de usuario</string>
+    <string name="register_name">Nombre</string>
+    <string name="register_lastname">Apellido</string>
+    <string name="register_age">Edad</string>
+    <string name="register_ident">Numero de identificacion</string>
+    <string name="register_btn">Registrar</string>
+    <string name="login_regHere_txt">Registrar aqui</string>
 </resources>
