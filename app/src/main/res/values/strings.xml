@@ -7,7 +7,7 @@
     <string name="welcome">Bienvenido</string>
     <string name="main_btn">Cerrar Sesion</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="login_txt">Iniciar sesion</string>
+    <string name="login_txt">Iniciar Sesión</string>
     <string name="login_usr">Usuario</string>
     <string name="login_pass">Contraseña</string>
     <string name="login_btn">Entrar</string>
@@ -17,7 +17,7 @@
     <string name="register_name">Nombre</string>
     <string name="register_lastname">Apellido</string>
     <string name="register_age">Edad</string>
-    <string name="register_ident">Numero de identificacion</string>
+    <string name="register_ident">Número de identificacion</string>
     <string name="register_btn">Registrar</string>
-    <string name="login_regHere_txt">Registrar aqui</string>
+    <string name="login_regHere_txt">Registrar aquí</string>
 </resources>

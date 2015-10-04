@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_txt"
+        android:textColor="#1d21b7"
         android:layout_marginBottom="15dp"
         />
     <EditText
@@ -32,11 +33,10 @@
         />
     <Button
         android:id="@+id/btnLog"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_btn"
-        android:background="#551b18"
-        android:textColor="#ffffff"
+        android:background="#cbced1"
         android:layout_marginBottom="20dp"
         />
     <TextView
@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_regHere_txt"
+        android:textColor="#ff1702"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         />
