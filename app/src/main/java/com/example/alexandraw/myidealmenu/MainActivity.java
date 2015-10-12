@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+        switch(v.getId()){
+
+            case R.id.btn_logout:
         //Cuando presione el boton de cerrrar sesion se coloca el booleano de la
         //llave login= false
         editor.putBoolean(LoginActivity.KEY_LOGIN, false);
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
+            break;
+        }
     }
 
     //Hasta el momento funciona bien pero cada vez que se ejecuta
