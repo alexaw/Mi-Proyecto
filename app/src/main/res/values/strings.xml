@@ -21,6 +21,13 @@
     <string name="register_btn">Registrar</string>
     <string name="login_regHere_txt">Registrar aquí</string>
     <string name="cate">Seleccione una categoría</string>
+    <string name="item">Seleccione un item</string>
+    <string name="title_activity_drinks">DrinksActivity</string>
+    <string name="title_activity_fast_food">FastFoodActivity</string>
+    <string name="title_activity_ice_cream">IceCreamActivity</string>
+    <string name="title_activity_others">OthersActivity</string>
+
+
 
     <string-array name="categorias">
         <item>Comidas Rápidas</item>
@@ -35,6 +42,36 @@
         <item>Heladería,Helados,4.3,http://www.recetin.com/wp-content/uploads/2013/07/helado_fresa1.jpg</item>
         <item>Varios,Cositas,4,http://orsimages.unileversolutions.com/ORS_Images/Knorr_es-CO/Empanadas_de_carne_28_1.3.6_326X580.Jpeg</item>
     </string-array>
+
+    <string-array name="fastfood">
+        <item>Perros</item>
+        <item>Hamburguesas</item>
+        <item>Sandwich</item>
+    </string-array>
+
+    <string-array name="drinks">
+        <item>Jugos</item>
+        <item>Gaseosas</item>
+        <item>Granizados</item>
+        <item>Malteadas</item>
+        <item>Cafetería</item>
+    </string-array>
+
+    <string-array name="icecream">
+        <item>Ensalada de Frutas</item>
+        <item>Banana Split</item>
+        <item>Copa de Helado</item>
+        <item>Fresas con Helado</item>
+    </string-array>
+
+    <string-array name="otros">
+        <item>Pan</item>
+        <item>Empanadas</item>
+        <item>Almohabanas</item>
+        <item>Bueñielos</item>
+        <item>Pan de Bono</item>
+    </string-array>
+    <string name="title_activity_secundario">Secundario</string>
 
 
 </resources>

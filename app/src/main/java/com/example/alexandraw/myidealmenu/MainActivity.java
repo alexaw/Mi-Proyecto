@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Objetos para leer y escribir
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(this);
         loadData();
 
     }
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void loadData() {
         String category[] = getResources().getStringArray(R.array.categorias_completo);
         for(int i=0; i<category.length;i++){
+            //split: metodo que corta la cadena de acuerdo a un toquen
             String categorys[] = category[i].split(",");
             Category c = new Category();
             c.setCategory(categorys[0]);
@@ -90,9 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             c.setScore(Float.parseFloat(categorys[2]));
             c.setImgUrl(categorys[3]);
 
+            //agrega los objetos
             data.add(c);
         }
 
+        //notificar que el conjunto de datos cambió
+        //renderiza los visibles en pantalla
         adapter.notifyDataSetChanged();
     }
 
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editor.putBoolean(LoginActivity.KEY_LOGIN, false);
         editor.commit();
 
-        //Cuando se cierra la sesion se debe abri la pantalla de registro
+        //Cuando se cierra la sesion se debe abrir la pantalla de registro
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
@@ -118,7 +124,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //cate.setText(data[position]);
-        cate.setText(data.get(position).getCategory());
+        //cate.setText(data.get(position).getCategory());
+
+        String valor = (String) parent.getItemAtPosition(position);
+        Intent nuevoform = new Intent(MainActivity.this,Secundario.class);
+        nuevoform.putExtra("Mes",valor);
+        startActivity(nuevoform);
+
+
+
     }
 
     //Hasta el momento funciona bien pero cada vez que se ejecuta
