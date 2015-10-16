@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseUser;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView txt;
@@ -23,6 +27,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // se inicializa parse
+        //Parse.initialize(this, "oWuXpc5ahPda0W9eBntpFNW3Grk3wLwVgSJZzbyQ", "JmCInHZTQuiYtizQTPYVDk6qUZ6VQLq4585RNr6q");
+       // ParseAnalytics.trackAppOpened(getIntent());
+
+
         //Se recuperan los views
         txt = (TextView)findViewById(R.id.txt);
         out = (Button)findViewById(R.id.btn_logout);
@@ -32,32 +41,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Se definio el nombre en Login Activity
         // uso la constante a traves de su clase
-        preferences = getSharedPreferences(LoginActivity.PREFERENCE, MODE_PRIVATE);
-        editor = preferences.edit();
+       // preferences = getSharedPreferences(LoginActivity.PREFERENCE, MODE_PRIVATE);
+        //editor = preferences.edit();
 
         //Cada que se tiene un valor se tiene dos argumentos
         //la llave y un valor por defecto en caso de que no exista
-        txt.setText(preferences.getString(LoginActivity.KEY_USER, ""));
+        //txt.setText(preferences.getString(LoginActivity.KEY_USER, ""));
     }
 
     @Override
     public void onClick(View v) {
 
-        switch(v.getId()){
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        //switch(v.getId()){
 
-            case R.id.btn_logout:
+          //  case R.id.btn_logout:
         //Cuando presione el boton de cerrrar sesion se coloca el booleano de la
         //llave login= false
-        editor.putBoolean(LoginActivity.KEY_LOGIN, false);
-        editor.commit();
+        //editor.putBoolean(LoginActivity.KEY_LOGIN, false);
+       // editor.commit();
 
-        //Cuando se cierra la sesion se debe abri la pantalla de registro
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-            break;
-        }
+               // ParseUser.logOut();
+               // takemeToSingup();
+
+            //break;
+
+
+        //}
+       // ParseUser cuser = ParseUser.getCurrentUser();
+
+        //if(cuser==null){
+           // takemeToSingup();
+       // }
     }
+
+
 
     //Hasta el momento funciona bien pero cada vez que se ejecuta
     //la app se abrira el registro, por eso creamos Root para que nos mande

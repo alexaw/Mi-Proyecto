@@ -14,13 +14,4 @@
         android:text="@string/welcome"
         android:gravity="center"       />
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/main_btn"
-        android:textColor="#ffffff"
-        android:background="#551b18"
-        />
-</RelativeLayout>
+   </RelativeLayout>

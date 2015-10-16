@@ -10,6 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;//
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseUser;
+
+import java.text.ParseException;
 
 
 // Se guarda el nombre del usuario y el login
@@ -30,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static final String PREFERENCE="preference";
 
     EditText usr, pass;
+    String sUsr, sPass;
     Button in;
     TextView link;
 
@@ -42,6 +51,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Parse.initialize(this, "oWuXpc5ahPda0W9eBntpFNW3Grk3wLwVgSJZzbyQ", "JmCInHZTQuiYtizQTPYVDk6qUZ6VQLq4585RNr6q");
+        ParseAnalytics.trackAppOpened(getIntent());
 
 
         //Se recuperan los views
@@ -71,26 +83,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLog:
                     //Cuando le de click e iniciar sesion se llena el editor que tiene
                     //un booleano con la llave login =  true
-                    editor.putBoolean(KEY_LOGIN, true);
+                    //editor.putBoolean(KEY_LOGIN, true);
 
                     //Se guarda de manera persistente y va a estar hasta que se desinstale  la app
                     //se va a guardar el nombre del usuario
-                    editor.putString(KEY_USER, usr.getText().toString());
-                    editor.commit();
+                    //editor.putString(KEY_USER, usr.getText().toString());
+                    //editor.commit();
 
                     //Se hace la navegacion al MainActivity, la navegacion entre
                     //pantallas se hace a traves de intents
 
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
+                sUsr = usr.getText().toString();
+                sPass = pass.getText().toString();
 
-                    //Para que al darle atras se cierre la app y finalice la activity
-                    finish();
+                ParseUser.logInInBackground(sUsr, sPass, new LogInCallback() {
+
+                    @Override
+                    public void done(ParseUser user, com.parse.ParseException e) {
+                        if (user != null) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            // Hooray! The user is logged in.
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Error al iniciar sesion", Toast.LENGTH_SHORT);
+                            toast.show();
+                            // Signup failed. Look at the ParseException to see what happened.
+                        }
+                    }
+                });
+
+
             break;
 
             case R.id.linkReg:
-                Intent intent2 = new Intent(this, RegisterActivity.class);
-                startActivity(intent2);
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
                 finish();
                 break;
         }
